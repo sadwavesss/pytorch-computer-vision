@@ -1,0 +1,117 @@
+{
+  "cnn": {
+    "config": {
+      "model": "cnn",
+      "augmentation": "basic",
+      "optimizer": "adamw",
+      "lr": 0.001,
+      "weight_decay": 0.0001,
+      "epochs": 30,
+      "patience": 8,
+      "scheduler": null,
+      "label_smoothing": 0.0,
+      "mixup_alpha": 0.0,
+      "cutmix_alpha": 0.0
+    },
+    "parameters": 2474506,
+    "best_val_accuracy": 78.82000000000001,
+    "epochs_trained": 30,
+    "train_minutes": 16.09895292123159,
+    "test_accuracy": 78.67,
+    "per_class_accuracy": {
+      "plane": 84.39999999999999,
+      "car": 93.2,
+      "bird": 60.8,
+      "cat": 57.099999999999994,
+      "deer": 80.10000000000001,
+      "dog": 63.1,
+      "frog": 86.7,
+      "horse": 84.7,
+      "ship": 89.2,
+      "truck": 87.4
+    }
+  },
+  "improved_cnn": {
+    "config": {
+      "model": "improved_cnn",
+      "augmentation": "improved",
+      "optimizer": "adamw",
+      "lr": 0.001,
+      "weight_decay": 0.0001,
+      "epochs": 40,
+      "patience": 10,
+      "scheduler": "cosine",
+      "label_smoothing": 0.1,
+      "mixup_alpha": 0.2,
+      "cutmix_alpha": 0.0
+    },
+    "parameters": 3380298,
+    "best_val_accuracy": 87.47,
+    "epochs_trained": 40,
+    "train_minutes": 24.52656414111455,
+    "test_accuracy": 86.87,
+    "per_class_accuracy": {
+      "plane": 89.5,
+      "car": 95.89999999999999,
+      "bird": 79.3,
+      "cat": 66.2,
+      "deer": 83.5,
+      "dog": 83.39999999999999,
+      "frog": 93.30000000000001,
+      "horse": 91.5,
+      "ship": 93.7,
+      "truck": 92.4
+    }
+  },
+  "resnet": {
+    "config": {
+      "model": "resnet",
+      "augmentation": "improved",
+      "optimizer": "sgd",
+      "lr": 0.1,
+      "weight_decay": 0.0005,
+      "epochs": 40,
+      "patience": 10,
+      "scheduler": "onecycle",
+      "label_smoothing": 0.1,
+      "mixup_alpha": 1.0,
+      "cutmix_alpha": 1.0
+    },
+    "parameters": 2777674,
+    "best_val_accuracy": 93.36,
+    "epochs_trained": 40,
+    "train_minutes": 25.80418448050817,
+    "test_accuracy": 92.82000000000001,
+    "per_class_accuracy": {
+      "plane": 94.1,
+      "car": 98.1,
+      "bird": 90.4,
+      "cat": 84.2,
+      "deer": 93.0,
+      "dog": 87.3,
+      "frog": 95.19999999999999,
+      "horse": 95.39999999999999,
+      "ship": 96.39999999999999,
+      "truck": 94.1
+    }
+  },
+  "ensemble": {
+    "members": [
+      "improved_cnn",
+      "resnet"
+    ],
+    "test_accuracy": 91.25,
+    "per_class_accuracy": {
+      "plane": 92.80000000000001,
+      "car": 97.3,
+      "bird": 87.2,
+      "cat": 77.4,
+      "deer": 89.8,
+      "dog": 88.0,
+      "frog": 95.6,
+      "horse": 94.3,
+      "ship": 95.6,
+      "truck": 94.5
+    }
+  }
+}

@@ -6,9 +6,54 @@ neural style transfer, YOLOv8-based object replacement and classical image filte
 All experiments run end-to-end from one [Colab notebook](notebooks/colab.ipynb) on a free T4 GPU;
 metrics and figures are saved to [`results/`](results).
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sadwavesss/pytorch-computer-vision/blob/main/notebooks/colab.ipynb)
+
 ## Results
 
-> Results will be added after the Colab run.
+### CIFAR-10 classification (test set, 10 000 images)
+
+| Model | Parameters | Epochs | Test accuracy |
+|---|---:|---:|---:|
+| `cnn` (baseline) | 2.5M | 30 | 78.67% |
+| `improved_cnn` | 3.4M | 40 | 86.87% |
+| **`resnet`** | 2.8M | 40 | **92.82%** |
+| ensemble (`improved_cnn` + `resnet`) | — | — | 91.25% |
+
+- The residual network with OneCycle LR, Mixup/CutMix and label smoothing is the best model: +14 pp over the baseline
+  with a similar number of parameters. Its validation accuracy was still growing at epoch 40, so a longer schedule would help.
+- The ensemble is worse than ResNet alone: averaging with a noticeably weaker model pulls predictions down.
+- The hardest class for every model is `cat` (57% → 84%), mostly confused with `dog`.
+
+![Training curves](results/classification/training_curves.png)
+
+Confusion matrices: [cnn](results/classification/cnn_confusion_matrix.png) ·
+[improved_cnn](results/classification/improved_cnn_confusion_matrix.png) ·
+[resnet](results/classification/resnet_confusion_matrix.png) ·
+[ensemble](results/classification/ensemble_confusion_matrix.png)
+
+### BUSI lesion segmentation (validation set, 156 images)
+
+| Metric | Value |
+|---|---:|
+| Lesion Dice | 0.684 |
+| Lesion IoU | 0.520 |
+| Mean IoU (lesion + background) | 0.737 |
+| Mean Dice | 0.830 |
+
+U-Net trained from scratch for 40 epochs (best epoch 36, ~14 min on a T4). The validation set was also used to pick the
+best epoch, so the numbers are slightly optimistic.
+
+![Segmentation predictions](results/segmentation/predictions.png)
+
+### Style transfer, object replacement, classical filters
+
+![Style transfer](results/style_transfer/style_transfer.png)
+
+| YOLOv8 detections | First detected person replaced |
+|---|---|
+| ![Detections](results/detection/detections.jpg) | ![Replaced](results/detection/replaced.jpg) |
+
+![Classical filters](results/classical/filters.png)
 
 ## Projects
 

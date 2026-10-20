@@ -1,0 +1,18 @@
+{
+  "steps": 300,
+  "size": 256,
+  "results": {
+    "1e+03": {
+      "final_content_loss": 0.03390812873840332,
+      "final_style_loss": 8.14124068710953e-05
+    },
+    "1e+05": {
+      "final_content_loss": 0.9894278645515442,
+      "final_style_loss": 7.895767339505255e-06
+    },
+    "1e+07": {
+      "final_content_loss": 6.257594585418701,
+      "final_style_loss": 3.8975065308477497e-07
+    }
+  }
+}
