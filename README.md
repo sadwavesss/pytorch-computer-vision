@@ -119,10 +119,23 @@ vision/
   detection/        replace_object.py
   classical/        filters.py, demo.py
   style_transfer.py
-  assets.py         downloads freely licensed demo images
+  assets.py         downloads the demo images
 notebooks/colab.ipynb
 results/            metrics (JSON) and figures from the Colab run
 tests/
 ```
 
-Demo images: scikit-image sample data, `bus.jpg` from ultralytics, and the Mona Lisa (public domain).
+## Data & citations
+
+Datasets are downloaded at run time and are not stored in this repository; `results/` contains only metrics, plots
+and a few sample predictions.
+
+- **CIFAR-10** &mdash; A. Krizhevsky. *Learning Multiple Layers of Features from Tiny Images*. Technical report,
+  University of Toronto, 2009. https://www.cs.toronto.edu/~kriz/cifar.html
+- **BUSI** &mdash; W. Al-Dhabyani, M. Gomaa, H. Khaled, A. Fahmy. *Dataset of breast ultrasound images*.
+  Data in Brief, 28:104863, 2020. https://doi.org/10.1016/j.dib.2019.104863
+  (images via [Kaggle](https://www.kaggle.com/datasets/aryashah2k/breast-ultrasound-images-dataset), CC0)
+- **Demo images** &mdash; `astronaut.png` and `chelsea.png` from
+  [scikit-image sample data](https://scikit-image.org/docs/stable/api/skimage.data.html);
+  `bus.jpg` from the [ultralytics](https://github.com/ultralytics/ultralytics) repository (AGPL-3.0);
+  *Mona Lisa* by Leonardo da Vinci (public domain).
